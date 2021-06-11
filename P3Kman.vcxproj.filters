@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{c6c13863-d73a-4085-be4d-4a905e378d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\sounds">
+      <UniqueIdentifier>{45b5c62d-3abd-427d-94e2-d7d6f8b4f221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\fonts">
+      <UniqueIdentifier>{2e1318a5-1fad-46cf-b056-f1c5bfd04636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\levels">
+      <UniqueIdentifier>{adba7b58-83fd-4e5c-8ff1-25ff406b99fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\main_menu">
+      <UniqueIdentifier>{3fdd99be-da49-44b6-9582-0979c2022779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\pacman">
+      <UniqueIdentifier>{824614f8-ad48-4e51-8464-06799918ab14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\monsters">
+      <UniqueIdentifier>{3f824905-fc99-4a23-b7cd-5e67309b3cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\points">
+      <UniqueIdentifier>{451f26e4-0a3b-431c-bac2-acec269b22bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\boosters">
+      <UniqueIdentifier>{e9434914-d50f-4529-86d8-be87b7ef9a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\ui">
+      <UniqueIdentifier>{89c0f442-0f14-4384-be61-7af0b00e81a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\map">
+      <UniqueIdentifier>{3da4ad3a-731c-4d25-bb31-1f08684d6682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures\map\walls">
+      <UniqueIdentifier>{c7454c08-e0a9-4fbf-9724-8675b6b9dfd7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gamebase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gamelogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IOput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rendercalc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gamelogic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IOput.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="render.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rendercalc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\mainmenu_logo.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_multiplayer_a.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_multiplayer_b.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_quit_a.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_quit_b.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_singleplayer_a.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_singleplayer_b.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_toplist_a.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\mainmenu_toplist_b.bmp">
+      <Filter>Resource Files\textures\main_menu</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_a_down.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_a_left.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_a_right.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_a_up.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_b_down.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_b_left.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_b_right.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\pacman_b_up.bmp">
+      <Filter>Resource Files\textures\pacman</Filter>
+    </Image>
+    <Image Include="resources\textures\Cthute.bmp">
+      <Filter>Resource Files\textures\monsters</Filter>
+    </Image>
+    <Image Include="resources\textures\Pearl.bmp">
+      <Filter>Resource Files\textures\monsters</Filter>
+    </Image>
+    <Image Include="resources\textures\Mask.bmp">
+      <Filter>Resource Files\textures\monsters</Filter>
+    </Image>
+    <Image Include="resources\textures\big_point.bmp">
+      <Filter>Resource Files\textures\points</Filter>
+    </Image>
+    <Image Include="resources\textures\point.bmp">
+      <Filter>Resource Files\textures\points</Filter>
+    </Image>
+    <Image Include="resources\textures\chili.bmp">
+      <Filter>Resource Files\textures\boosters</Filter>
+    </Image>
+    <Image Include="resources\textures\shaved_ice.bmp">
+      <Filter>Resource Files\textures\boosters</Filter>
+    </Image>
+    <Image Include="resources\textures\heart.bmp">
+      <Filter>Resource Files\textures\ui</Filter>
+    </Image>
+    <Image Include="resources\textures\path.bmp">
+      <Filter>Resource Files\textures\map</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_0.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_1_down.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_1_left.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_1_right.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_1_up.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_2_d_l.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_2_d_r.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_2_horizontal.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_2_u_l.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_2_u_r.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_2_vertical.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_3_down.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_3_left.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_3_right.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_3_up.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+    <Image Include="resources\textures\wall_4.bmp">
+      <Filter>Resource Files\textures\map\walls</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\sounds\chili.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\freeze.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\Loyalty_Freak_Music_-_Sweat_Time.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\menu_choose.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\menu_click.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\monster_eaten.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\nom_nom.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\point_big_eaten.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+    <Media Include="resources\sounds\point_normal_eaten.wav">
+      <Filter>Resource Files\sounds</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\levels\level_0.txt">
+      <Filter>Resource Files\levels</Filter>
+    </Text>
+    <Text Include="resources\levels\level_1.txt">
+      <Filter>Resource Files\levels</Filter>
+    </Text>
+    <Text Include="resources\top_scores.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Amatic-Bold.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
