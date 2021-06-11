@@ -7,16 +7,16 @@ typedef struct initMainMenuBaseGridSizes{
 }initMainMenuBaseGridSizes;
 
 /* Megadott felbontás alapján kitölti megfelelõen az initMainMenuCoords struktúrát */
-initMainMenuCoords getMainMenuCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH);
+MainMenuCoords getMainMenuCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH);
 
 /* Megadott felbontás,betûméret alapján kitölti megfelelõen az initTopListCoords struktúrát */
-initTopListCoords getTopListCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH, int fontSize);
+TopListCoords getTopListCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH, int fontSize);
 
 /* Megadott felbontás,betûméret alapján kitölti megfelelõen az initMainMenuBaseGridSizes struktúrát*/
 initMainMenuBaseGridSizes getMainMenuBaseGridSizes(int SCREEN_HEIGHT, int SCREEN_WIDTH);
 
 /* Megadott felbontás,betûméret és stringek alapján kitölti megfelelõen az initGetDifficultyCoords struktúrát*/
-initGetDifficultyCoords getGetDifficultyCoords(renderAssets *renderAsset, const char* difTextString, const char *easyString, const char *normalString, const char *hardString);
+GetDifficultyCoords getGetDifficultyCoords(RenderAssets *renderAsset, const char* difTextString, const char *easyString, const char *normalString, const char *hardString);
 
 /* Adott Place sturktúrából egyetlen egy megadott stringbe teszi, közöttük a tabNum szóközt hagy ki*/
 void placeStructToString(Place *source, char* targetString, int maxNameChar, int maxPlaceChar, int maxPointChar, int plusChar, int tabNum);
@@ -31,16 +31,16 @@ int numberCharNum(int number);
 SDL_Rect renderAnimateConvert(LevelDimensions size, SDL_Rect start, Coordinate base);
 
 /* Visszatér HUD-on a játékos név megjelenítéséhez szükséges SDL_Rect struktúrával */
-SDL_Rect getHUDNameRect(renderAssets *renderAsset, Coordinate start, const char* playerName);
+SDL_Rect getHUDNameRect(RenderAssets *renderAsset, Coordinate start, const char* playerName);
 
 /* Visszatér név alatt lévõ vonal megjelenítéséhez szükséges SDL_Rect struktúrával */
 SDL_Rect getHUDNameLineRect(SDL_Rect nameRect);
 
 /* Visszatér HUD-on a pontok megjelenítéséhez szükséges SDL_Rect struktúrával */
-SDL_Rect getHUDPointsRect(renderAssets *renderAsset, Coordinate start, const char *scoreString);
+SDL_Rect getHUDPointsRect(RenderAssets *renderAsset, Coordinate start, const char *scoreString);
 
 /* Visszatér HUD-on az életek megjelenítéséhez szükséges SDL_Rect struktúrával */
-SDL_Rect getHeartRectBase(renderAssets *renderAsset, Coordinate start);
+SDL_Rect getHeartRectBase(RenderAssets *renderAsset, Coordinate start);
 
 /* Megadott int számot visszad char*-ként */
 char *getScoreString(int points);
@@ -52,8 +52,8 @@ char *getLeveLSourcePathString(int levelNumber);
 char *getLevelName(int index);
 
 /* Visszatér HUD-on a chili megjelenítéséhez szükséges SDL_Rect struktúrával */
-SDL_Rect getStateEnragedRect(renderAssets *renderAsset, Coordinate start);
+SDL_Rect getStateEnragedRect(RenderAssets *renderAsset, Coordinate start);
 
 /* Visszatér HUD-on a jégkása megjelenítéséhez szükséges SDL_Rect struktúrával */
-SDL_Rect getStateFrozenRect(renderAssets *renderAsset, Coordinate start);
+SDL_Rect getStateFrozenRect(RenderAssets *renderAsset, Coordinate start);
 #endif 

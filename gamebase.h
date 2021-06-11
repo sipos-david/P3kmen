@@ -31,14 +31,14 @@ typedef struct windowData {
 }windowData;
 
 /* Struktúra ami egybefogja a renderert */
-typedef struct initRenderer{
+typedef struct Renderer{
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	int SCREEN_WIDTH, SCREEN_HEIGHT;
-}initRenderer;
+}Renderer;
 
 /* Struktúra ami egybefogja a hangokat */
-typedef struct initSounds {
+typedef struct Sounds {
 	Mix_Chunk *nom_nom;
 	Mix_Chunk *menu_move;
 	Mix_Chunk *menu_choose;
@@ -48,10 +48,10 @@ typedef struct initSounds {
 	Mix_Chunk *monster_eaten;
 	Mix_Chunk *chili;
 	Mix_Music *background_music;
-}initSounds;
+}Sounds;
 
 /* Struktúra ami egyfogja az összes textúrát*/
-typedef struct initTexture{
+typedef struct Textures{
 	/* Játékos textúrák */
 	SDL_Texture *pacmanA_up;
 	SDL_Texture *pacmanA_down;
@@ -104,24 +104,24 @@ typedef struct initTexture{
 	SDL_Texture *mainmenu_toplist_b;
 	SDL_Texture *mainmenu_quit_a;
 	SDL_Texture *mainmenu_quit_b;
-}initTexture;
+}Textures;
 
 /* Struktúra ami eltárolja egy SDL_ttf betûtípus adatait */
-typedef struct initFont {
+typedef struct Font {
 	TTF_Font *font;
 	int size;
 	SDL_Color color;
-}initFont;
+}Font;
 
 /* Struktúra ami eltárolja a megjelenítéshez és a hangeffektek adatait */
-typedef struct renderAssets {
-	initRenderer *renderer;
-	initTexture *texture;
-	initFont *font;
-	initSounds *sounds;
+typedef struct RenderAssets {
+	Renderer *renderer;
+	Textures *texture;
+	Font *font;
+	Sounds *sounds;
 	windowData *windowResolution;
 	bool close;
-}renderAssets;
+}RenderAssets;
 
 /* Struktúra a pálya dimenzóinak */
 typedef struct LevelDimensions{
@@ -129,19 +129,19 @@ typedef struct LevelDimensions{
 }LevelDimensions;
 
 /* Összefogja a fõmenü rendereléséhez szükséges SDL_Rect változókat */
-typedef struct initMainMenuCoords{
+typedef struct MainMenuCoords{
 	SDL_Rect logo, singleplayer, multiplayer, toplist, quit;
-}initMainMenuCoords;
+}MainMenuCoords;
 
 /* Összefogja a dicsõséglista rendereléséhez szükséges SDL_Rect változókat */
-typedef struct initTopListCoords{
+typedef struct TopListCoords{
 	SDL_Rect toplistTitle,placementsBase;
-}initTopListCoords;
+}TopListCoords;
 
 /* Összefogja a nehézség választó menü rendereléséhez szükséges SDL_Rect változókat */
-typedef struct initGetDifficultyCoords {
+typedef struct GetDifficultyCoords {
 	SDL_Rect difText, difNormalText, difEasyText, difHardText, selectionClear;
-}initGetDifficultyCoords;
+}GetDifficultyCoords;
 
 /* Enumerizáció a pálya lehetséges elemihez*/
 typedef enum TileType {

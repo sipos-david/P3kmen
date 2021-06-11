@@ -6,26 +6,26 @@
 #include <time.h>
 
 /* Egyjátékos mód  */
-void singlePlayer(renderAssets *renderAsset);
+void singlePlayer(RenderAssets *renderAsset);
 
 /* Többjátékos mód  */
-void multiPlayer(renderAssets *renderAsset);
+void multiPlayer(RenderAssets *renderAsset);
 
 /* Dicsõség lista kiírása */
-void topList(renderAssets *renderAsset);
+void topList(RenderAssets *renderAsset);
 
 /* Dicsõség lista és adott pont kiírása, ha a pont elegendõ a listára felkerüléshez a program bekéri a játékos nevét és felkerül a toplistára, az eredmények.txt-ben is */
-void finalScoreToplist(renderAssets *renderAsset, int score);
+void finalScoreToplist(RenderAssets *renderAsset, int score);
 
 int main(int argc, char* args[]){
 	srand(time(NULL));
 	windowData window = getWindowData();
-	initRenderer renderer = initRender(window);
-	initTexture texture = loadTexture(&renderer);
-	initFont amaticBold = loadFont("resources/fonts/Amatic-Bold.ttf", 32);
-	initSounds sounds = loadSounds();
-	renderAssets renderAsset = {&renderer, &texture, &amaticBold, &sounds, &window, false};
-	initMainMenuCoords mainMenuCoord = getMainMenuCoords(renderer.SCREEN_HEIGHT, renderer.SCREEN_WIDTH);
+	Renderer renderer = initRender(window);
+	Textures texture = loadTexture(&renderer);
+	Font amaticBold = loadFont("resources/fonts/Amatic-Bold.ttf", 32);
+	Sounds sounds = loadSounds();
+	RenderAssets renderAsset = {&renderer, &texture, &amaticBold, &sounds, &window, false};
+	MainMenuCoords mainMenuCoord = getMainMenuCoords(renderer.SCREEN_HEIGHT, renderer.SCREEN_WIDTH);
 	MainMenuSelection selection = notvalidinput, selection_next = singleplayer;
 	SDL_Event eventMain;
 	while (!renderAsset.close){
@@ -65,7 +65,7 @@ int main(int argc, char* args[]){
 	return 0;
 }
 
-void singlePlayer(renderAssets *renderAsset){
+void singlePlayer(RenderAssets *renderAsset){
 
 	Level *level = initLevel(renderAsset);
 	if (renderAsset->close == true) {
@@ -106,7 +106,7 @@ void singlePlayer(renderAssets *renderAsset){
 	finalScoreToplist(renderAsset,score);
 }
 
-void multiPlayer(renderAssets *renderAsset){
+void multiPlayer(RenderAssets *renderAsset){
 
 	Level *level = initLevel(renderAsset);
 	if (renderAsset->close == true) {
@@ -138,12 +138,12 @@ void multiPlayer(renderAssets *renderAsset){
 	freeLevel(level);
 }
 
-void topList(renderAssets *renderAsset){
+void topList(RenderAssets *renderAsset){
 
 	/*A placementNumber változó befolyásolja a beolvasott.kiirt eredmenyek darabszámát.*/
 	int placementNumber = 10;
 
-	initTopListCoords topListCoords = getTopListCoords(renderAsset->renderer->SCREEN_HEIGHT, renderAsset->renderer->SCREEN_WIDTH, renderAsset->font->size);
+	TopListCoords topListCoords = getTopListCoords(renderAsset->renderer->SCREEN_HEIGHT, renderAsset->renderer->SCREEN_WIDTH, renderAsset->font->size);
 	Place **topListArray = readTopList(placementNumber);
 	placeStructArraySelectionSort(topListArray, placementNumber);
 	writeTopList(topListArray, placementNumber);
@@ -165,12 +165,12 @@ void topList(renderAssets *renderAsset){
 	freePlaceStructArray(topListArray, placementNumber);
 }
 
-void finalScoreToplist(renderAssets *renderAsset, int score) {
+void finalScoreToplist(RenderAssets *renderAsset, int score) {
 
 	/*A placementNumber változó befolyásolja a beolvasott.kiirt eredmenyek darabszámát.*/
 	int placementNumber = 10;
 
-	initTopListCoords topListCoords = getTopListCoords(renderAsset->renderer->SCREEN_HEIGHT, renderAsset->renderer->SCREEN_WIDTH, renderAsset->font->size);
+	TopListCoords topListCoords = getTopListCoords(renderAsset->renderer->SCREEN_HEIGHT, renderAsset->renderer->SCREEN_WIDTH, renderAsset->font->size);
 	Place **topListArray = readTopList(placementNumber);
 	topListArray = remakeDynPlaceStructArray(topListArray, placementNumber);
 	insertNameToplist(renderAsset, topListArray, &placementNumber, score);

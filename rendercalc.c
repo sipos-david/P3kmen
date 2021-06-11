@@ -2,8 +2,8 @@
 #include "rendercalc.h"
 
 
-initMainMenuCoords getMainMenuCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH){
-	initMainMenuCoords mainMenu;
+MainMenuCoords getMainMenuCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH){
+	MainMenuCoords mainMenu;
 	initMainMenuBaseGridSizes size = getMainMenuBaseGridSizes(SCREEN_HEIGHT, SCREEN_WIDTH);
 
 	int x = SCREEN_WIDTH * 7/16;
@@ -37,8 +37,8 @@ initMainMenuCoords getMainMenuCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH){
 	return mainMenu;
 }
 
-initTopListCoords getTopListCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH,int fontSize) {
-	initTopListCoords topList;
+TopListCoords getTopListCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH,int fontSize) {
+	TopListCoords topList;
 	initMainMenuBaseGridSizes size = getMainMenuBaseGridSizes(SCREEN_HEIGHT, SCREEN_WIDTH);
 
 	topList.toplistTitle.x = SCREEN_WIDTH * 3 / 8;
@@ -54,8 +54,8 @@ initTopListCoords getTopListCoords(int SCREEN_HEIGHT, int SCREEN_WIDTH,int fontS
 	return topList;
 }
 
-initGetDifficultyCoords getGetDifficultyCoords(renderAssets *renderAsset, const char* difTextString, const char *easyString, const char *normalString, const char *hardString) {
-	initGetDifficultyCoords tmp;
+GetDifficultyCoords getGetDifficultyCoords(RenderAssets *renderAsset, const char* difTextString, const char *easyString, const char *normalString, const char *hardString) {
+	GetDifficultyCoords tmp;
 
 	tmp.difText.x = renderAsset->renderer->SCREEN_WIDTH / 2 - strlen(difTextString) / 2 * renderAsset->font->size;
 	tmp.difText.y = renderAsset->renderer->SCREEN_HEIGHT / 4 - renderAsset->font->size / 2;
@@ -157,7 +157,7 @@ SDL_Rect renderAnimateConvert(LevelDimensions size, SDL_Rect start, Coordinate b
 	return tmp;
 }
 
-SDL_Rect getHUDNameRect(renderAssets *renderAsset, Coordinate start,const char* playerName){
+SDL_Rect getHUDNameRect(RenderAssets *renderAsset, Coordinate start,const char* playerName){
 	SDL_Rect tmp;
 	tmp.x = start.x - (renderAsset->font->size * strlen(playerName)/2);
 	tmp.y = start.y - renderAsset->font->size;
@@ -175,7 +175,7 @@ SDL_Rect getHUDNameLineRect(SDL_Rect nameRect){
 	return tmp;
 }
 
-SDL_Rect getHUDPointsRect(renderAssets *renderAsset, Coordinate start, const char *scoreString){
+SDL_Rect getHUDPointsRect(RenderAssets *renderAsset, Coordinate start, const char *scoreString){
 	SDL_Rect tmp;
 	tmp.x = start.x - (renderAsset->font->size * strlen(scoreString) / 2);
 	tmp.y = start.y + 14; // 4 vonal hossza plusz 10 pixel távolság
@@ -195,7 +195,7 @@ char *getScoreString(int points){
 	return finalText;
 }
 
-SDL_Rect getHeartRectBase(renderAssets *renderAsset,Coordinate start){
+SDL_Rect getHeartRectBase(RenderAssets *renderAsset,Coordinate start){
 	SDL_Rect tmp;
 	start.x = renderAsset->renderer->SCREEN_WIDTH - (renderAsset->renderer->SCREEN_WIDTH - start.x) * 2;
 	tmp.w = (renderAsset->renderer->SCREEN_WIDTH - start.x) / 10; // 2*5 vagyis így a szivek mindig a elérhetõ pixelszám fele nagyságúak
@@ -225,7 +225,7 @@ char *getLevelName(int index){
 	}
 }
 
-SDL_Rect getStateEnragedRect(renderAssets *renderAsset, Coordinate start) {
+SDL_Rect getStateEnragedRect(RenderAssets *renderAsset, Coordinate start) {
 	SDL_Rect tmp;
 	start.x = renderAsset->renderer->SCREEN_WIDTH - (renderAsset->renderer->SCREEN_WIDTH - start.x) * 2;
 	tmp.w = (renderAsset->renderer->SCREEN_WIDTH - start.x) / 10; /* 2*5 vagyis a chili mindig olyan nagy mint a sziv */
@@ -235,7 +235,7 @@ SDL_Rect getStateEnragedRect(renderAssets *renderAsset, Coordinate start) {
 	return tmp;
 }
 
-SDL_Rect getStateFrozenRect(renderAssets *renderAsset, Coordinate start) {
+SDL_Rect getStateFrozenRect(RenderAssets *renderAsset, Coordinate start) {
 	SDL_Rect tmp;
 	start.x = renderAsset->renderer->SCREEN_WIDTH - (renderAsset->renderer->SCREEN_WIDTH - start.x) * 2;
 	tmp.w = (renderAsset->renderer->SCREEN_WIDTH - start.x) / 10; /* 2*5 vagyis a jégkása mindig olyan nagy mint a sziv */

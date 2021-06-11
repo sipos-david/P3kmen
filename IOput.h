@@ -2,7 +2,7 @@
 #define IOPUT_H
 
 /* A fõmenüben kezeli az inputot, ha billentyûlenyomás visszatér a megfelelõ értékkel, ellenben selection a kimenet */
-MainMenuSelection getMainMenuInput(SDL_Event *eventMain, MainMenuSelection selection, renderAssets *renderAsset);
+MainMenuSelection getMainMenuInput(SDL_Event *eventMain, MainMenuSelection selection, RenderAssets *renderAsset);
 
 /* Eredmények.txt-bõl feltölt Place strukturát, annyi darabot ammenyi a placementNumber bemenet */
 Place **readTopList(int placementNumber);

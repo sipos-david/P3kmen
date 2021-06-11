@@ -4,8 +4,8 @@
 #include "IOput.h"
 #include "gamelogic.h"
 
-initRenderer initRender(windowData windowResolution){
-	initRenderer renderer;
+Renderer initRender(windowData windowResolution){
+	Renderer renderer;
 	//renderer.SCREEN_WIDTH  = 1280;
 	//renderer.SCREEN_HEIGHT = 720;
 
@@ -57,8 +57,8 @@ initRenderer initRender(windowData windowResolution){
 	return renderer;
 }
 
-initSounds loadSounds(void) {
-	initSounds sounds;
+Sounds loadSounds(void) {
+	Sounds sounds;
 
 	sounds.background_music = Mix_LoadMUS("resources/sounds/Loyalty_Freak_Music_-_Sweat_Time.wav");
 	if (sounds.background_music == NULL)
@@ -99,7 +99,7 @@ initSounds loadSounds(void) {
 	return sounds;
 }
 
-SDL_Texture *loadImage(const char *picture, initRenderer *renderer) {
+SDL_Texture *loadImage(const char *picture, Renderer *renderer) {
 	SDL_RenderClear(renderer->renderer);
 	SDL_Surface *loadedImage = IMG_Load(picture);
 	if (loadedImage == NULL)
@@ -111,8 +111,8 @@ SDL_Texture *loadImage(const char *picture, initRenderer *renderer) {
 	return loadedTexture;
 }
 
-initTexture loadTexture(initRenderer *renderer){
-	initTexture texture;
+Textures loadTexture(Renderer *renderer){
+	Textures texture;
 	
 	/* Player textúrák betöltése*/
 	texture.pacmanA_up = loadImage("resources/textures/pacman_a_up.bmp", renderer);
@@ -169,8 +169,8 @@ initTexture loadTexture(initRenderer *renderer){
 	return texture;
 }
 
-initFont loadFont(const char* filePath, int fontSize){
-	initFont font;
+Font loadFont(const char* filePath, int fontSize){
+	Font font;
 	font.size = fontSize;
 	font.font = TTF_OpenFont(filePath, font.size);
 	if (!font.font)
@@ -182,7 +182,7 @@ initFont loadFont(const char* filePath, int fontSize){
 	return font;
 }
 
-void sdlClose(renderAssets *renderAsset) {
+void sdlClose(RenderAssets *renderAsset) {
 	if (renderAsset->windowResolution->isFullscreen)
 		SDL_SetWindowFullscreen(renderAsset->renderer->window, 0);
 
@@ -256,7 +256,7 @@ void sdlClose(renderAssets *renderAsset) {
 	SDL_Quit();
 }
 
-void drawMainMenu(renderAssets *renderAsset, MainMenuSelection selection, initMainMenuCoords mainMenuCoord)
+void drawMainMenu(RenderAssets *renderAsset, MainMenuSelection selection, MainMenuCoords mainMenuCoord)
 {
 	SDL_SetRenderDrawColor(renderAsset->renderer->renderer,255,255,255,255);
 	SDL_RenderClear(renderAsset->renderer->renderer);
@@ -281,7 +281,7 @@ void drawMainMenu(renderAssets *renderAsset, MainMenuSelection selection, initMa
 	SDL_RenderPresent(renderAsset->renderer->renderer);
 }
 
-void renderTopList(renderAssets *renderAsset, initTopListCoords topListCoords, Place **topList, int placementNumber) {
+void renderTopList(RenderAssets *renderAsset, TopListCoords topListCoords, Place **topList, int placementNumber) {
 	SDL_SetRenderDrawColor(renderAsset->renderer->renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderAsset->renderer->renderer);
 	SDL_RenderCopy(renderAsset->renderer->renderer, renderAsset->texture->mainmenu_toplist_a, NULL, &topListCoords.toplistTitle);
@@ -321,7 +321,7 @@ void renderTopList(renderAssets *renderAsset, initTopListCoords topListCoords, P
 	SDL_RenderPresent(renderAsset->renderer->renderer);
 }
 
-void renderScoreInputScreen(renderAssets *renderAsset,const char* nameString) {
+void renderScoreInputScreen(RenderAssets *renderAsset,const char* nameString) {
 	SDL_SetRenderDrawColor(renderAsset->renderer->renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderAsset->renderer->renderer);
 	SDL_Rect nameText, nameInputText;
@@ -348,7 +348,7 @@ void renderScoreInputScreen(renderAssets *renderAsset,const char* nameString) {
 	SDL_RenderPresent(renderAsset->renderer->renderer);
 }
 
-void renderText(renderAssets *renderAsset, SDL_Rect place, const char* string) {
+void renderText(RenderAssets *renderAsset, SDL_Rect place, const char* string) {
 	SDL_Surface* tmpSurface = NULL;
 	SDL_Texture* tmpTexture = NULL;
 	tmpSurface = TTF_RenderText_Solid(renderAsset->font->font, string, renderAsset->font->color);
@@ -364,7 +364,7 @@ void renderText(renderAssets *renderAsset, SDL_Rect place, const char* string) {
 	SDL_DestroyTexture(tmpTexture);
 }
 
-void renderMapWithoutEntities(Level *level, renderAssets *renderAsset) {
+void renderMapWithoutEntities(Level *level, RenderAssets *renderAsset) {
 	for (int x = 0; x < level->dimension.colums; x++){
 		for (int y = 0; y < level->dimension.rows; y++){
 			SDL_Rect tmp;
@@ -445,7 +445,7 @@ void renderMapWithoutEntities(Level *level, renderAssets *renderAsset) {
 	SDL_RenderPresent(renderAsset->renderer->renderer);
 }
 
-Difficulty getDifficulty(renderAssets *renderAsset) {
+Difficulty getDifficulty(RenderAssets *renderAsset) {
 	
 	SDL_SetRenderDrawColor(renderAsset->renderer->renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderAsset->renderer->renderer);
@@ -455,7 +455,7 @@ Difficulty getDifficulty(renderAssets *renderAsset) {
 		normalString[] = "Normal",
 		hardString[] = "Nehez";
 
-	initGetDifficultyCoords coords = getGetDifficultyCoords(renderAsset, difTextString, easyString, normalString, hardString);
+	GetDifficultyCoords coords = getGetDifficultyCoords(renderAsset, difTextString, easyString, normalString, hardString);
 	/* Aktuálisan kiválasztott opció aláhúzásának magassága pixelekben */
 	int selectionPixelHeight = 5;
 	coords.selectionClear.h = selectionPixelHeight;
@@ -521,7 +521,7 @@ Difficulty getDifficulty(renderAssets *renderAsset) {
 	return normal;
 }
 
-void placeSelectionRectForRender(renderAssets *renderAsset, SDL_Rect placement, int pixelHeight){
+void placeSelectionRectForRender(RenderAssets *renderAsset, SDL_Rect placement, int pixelHeight){
 	SDL_Rect selectionMarker;
 	selectionMarker.x = placement.x;
 	selectionMarker.y = placement.y + renderAsset->font->size;
@@ -531,7 +531,7 @@ void placeSelectionRectForRender(renderAssets *renderAsset, SDL_Rect placement, 
 	SDL_RenderFillRect(renderAsset->renderer->renderer, &selectionMarker);
 }
 
-char *getLevelFromFile(renderAssets *renderAsset){
+char *getLevelFromFile(RenderAssets *renderAsset){
 	SDL_SetRenderDrawColor(renderAsset->renderer->renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderAsset->renderer->renderer);
 
@@ -601,7 +601,7 @@ char *getLevelFromFile(renderAssets *renderAsset){
 		return getLeveLSourcePathString(levelNumber);
 }
 
-void renderAnimateEntity(renderAssets *renderAsset, Level *level, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords, Direction dir){
+void renderAnimateEntity(RenderAssets *renderAsset, Level *level, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords, Direction dir){
 	switch (dir) {
 		case up:
 			renderAnimateEntityMoveUp(renderAsset,level->tile,level->dimension,texture,newCoords, oldCoords);
@@ -618,7 +618,7 @@ void renderAnimateEntity(renderAssets *renderAsset, Level *level, SDL_Texture *t
 	}
 }
 
-void renderAnimateEntityMoveUp(renderAssets *renderAsset,SDL_Rect tile,LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
+void renderAnimateEntityMoveUp(RenderAssets *renderAsset,SDL_Rect tile,LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
 	SDL_Rect current = renderAnimateConvert(size, tile, oldCoords);
 	for (int y = 0; y < tile.h; y++){
 		SDL_RenderCopy(renderAsset->renderer->renderer, renderAsset->texture->path,NULL,&current);
@@ -628,7 +628,7 @@ void renderAnimateEntityMoveUp(renderAssets *renderAsset,SDL_Rect tile,LevelDime
 	}
 }
 
-void renderAnimateEntityMoveDown(renderAssets *renderAsset, SDL_Rect tile, LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
+void renderAnimateEntityMoveDown(RenderAssets *renderAsset, SDL_Rect tile, LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
 	SDL_Rect current = renderAnimateConvert(size, tile, oldCoords);
 	for (int y = 0; y < tile.h; y++) {
 		SDL_RenderCopy(renderAsset->renderer->renderer, renderAsset->texture->path, NULL, &current);
@@ -638,7 +638,7 @@ void renderAnimateEntityMoveDown(renderAssets *renderAsset, SDL_Rect tile, Level
 	}
 }
 
-void renderAnimateEntityMoveLeft(renderAssets *renderAsset, SDL_Rect tile, LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
+void renderAnimateEntityMoveLeft(RenderAssets *renderAsset, SDL_Rect tile, LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
 	SDL_Rect current = renderAnimateConvert(size, tile, oldCoords);
 	for (int x = 0; x < tile.w; x++) {
 		SDL_RenderCopy(renderAsset->renderer->renderer, renderAsset->texture->path, NULL, &current);
@@ -648,7 +648,7 @@ void renderAnimateEntityMoveLeft(renderAssets *renderAsset, SDL_Rect tile, Level
 	}
 }
 
-void renderAnimateEntityMoveRight(renderAssets *renderAsset, SDL_Rect tile, LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
+void renderAnimateEntityMoveRight(RenderAssets *renderAsset, SDL_Rect tile, LevelDimensions size, SDL_Texture *texture, Coordinate newCoords, Coordinate oldCoords) {
 	SDL_Rect current = renderAnimateConvert(size, tile, oldCoords);
 	for (int x = 0; x < tile.w; x++) {
 		SDL_RenderCopy(renderAsset->renderer->renderer, renderAsset->texture->path, NULL, &current);
@@ -658,7 +658,7 @@ void renderAnimateEntityMoveRight(renderAssets *renderAsset, SDL_Rect tile, Leve
 	}
 }
 
-void renderMapJustEntities(Level *level, renderAssets *renderAsset, Player *playerOne, Player *playerTwo, Monsters *monsters) {
+void renderMapJustEntities(Level *level, RenderAssets *renderAsset, Player *playerOne, Player *playerTwo, Monsters *monsters) {
 	for (int x = 0; x < level->dimension.colums; x++) {
 		for (int y = 0; y < level->dimension.rows; y++) {
 			SDL_Rect tmp;
@@ -685,7 +685,7 @@ void renderMapJustEntities(Level *level, renderAssets *renderAsset, Player *play
 	}
 }
 
-void renderHUD(renderAssets *renderAsset,Coordinate hudZero, Player *playerOne,Player *playerTwo, bool renderIce) {
+void renderHUD(RenderAssets *renderAsset,Coordinate hudZero, Player *playerOne,Player *playerTwo, bool renderIce) {
 	renderClearHUD(renderAsset,hudZero);
 	SDL_SetRenderDrawColor(renderAsset->renderer->renderer, 0,0,0,255);
 	if (renderIce) {
@@ -713,7 +713,7 @@ void renderHUD(renderAssets *renderAsset,Coordinate hudZero, Player *playerOne,P
 	}
 }
 
-void renderClearHUD(renderAssets *renderAsset, Coordinate hudZero) {
+void renderClearHUD(RenderAssets *renderAsset, Coordinate hudZero) {
 	SDL_Rect tmp;
 	tmp.x = hudZero.x;
 	tmp.y = hudZero.y;
@@ -724,7 +724,7 @@ void renderClearHUD(renderAssets *renderAsset, Coordinate hudZero) {
 	SDL_RenderPresent(renderAsset->renderer->renderer);
 }
 
-void renderPlayerHUD(renderAssets *renderAsset, Coordinate start, Player* player, const char* playerName) {
+void renderPlayerHUD(RenderAssets *renderAsset, Coordinate start, Player* player, const char* playerName) {
 	SDL_Rect nameRect = getHUDNameRect(renderAsset,start, playerName);
 	renderText(renderAsset, nameRect, playerName);
 
@@ -752,7 +752,7 @@ void renderPlayerHUD(renderAssets *renderAsset, Coordinate start, Player* player
 	free(scoreString);
 }
 
-Level* initLevel(renderAssets *renderAsset) {
+Level* initLevel(RenderAssets *renderAsset) {
 	LevelDimensions dim;
 	char *levelSourceFilePath = getLevelFromFile(renderAsset);
 	if (renderAsset->close == true) return NULL;
@@ -774,7 +774,7 @@ Level* initLevel(renderAssets *renderAsset) {
 	return level;
 }
 
-void insertNameToplist(renderAssets *renderAsset, Place **topListArray, int *placementNumber, int score) {
+void insertNameToplist(RenderAssets *renderAsset, Place **topListArray, int *placementNumber, int score) {
 	SDL_Event insertNameToplist;
 	bool quit = false;
 	if (topListArray[*placementNumber - 1]->points < score) {

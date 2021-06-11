@@ -2,7 +2,7 @@
 #define GAMELOGIC_H
 
 /* Inicializál egy játékost */
-Player playerInit(renderAssets *renderAsset, Difficulty difficulty, TileType pacmanID, Level *level);
+Player playerInit(RenderAssets *renderAsset, Difficulty difficulty, TileType pacmanID, Level *level);
 
 /* Lespawnol egy adott játékost a pályára */
 void spawnPlayer(Level *level, Player *player);
@@ -44,19 +44,19 @@ int getPlayerNumber(Level *level);
 Coordinate getValidCoords(Level *level);
 
 /* Egy játék játszása*/
-void playGame(renderAssets *renderAsset, Level* level, Player *playerOne, Player *playerTwo, Monsters* baddies);
+void playGame(RenderAssets *renderAsset, Level* level, Player *playerOne, Player *playerTwo, Monsters* baddies);
 
 /* A bemenõ billentyûzet imputot kezeli*/
-void keyBoardInputHandler(renderAssets *renderAsset, Level* level, SDL_Event *event, Player *playerOne, Player *playerTwo, Monsters *monsters);
+void keyBoardInputHandler(RenderAssets *renderAsset, Level* level, SDL_Event *event, Player *playerOne, Player *playerTwo, Monsters *monsters);
 
 /* Átrak egy játékost másik pontra */
-void playerMoveToNewDest(renderAssets *renderAsset, Level *level, Player *player, Direction dir, Monsters *monsters);
+void playerMoveToNewDest(RenderAssets *renderAsset, Level *level, Player *player, Direction dir, Monsters *monsters);
 
 /* Irányból megmondja a koordinátát */
 Coordinate getCoordinateFromDirection(LevelDimensions size, Coordinate coords, Direction dir);
 
 /* Karakter rak át a megadott pontra */
-void moveEntityToDest(renderAssets *renderAsset, Level *level, TileType id, Coordinate oldCoords, Coordinate newCoords, SDL_Texture *texture, Direction dir, bool isPlayer);
+void moveEntityToDest(RenderAssets *renderAsset, Level *level, TileType id, Coordinate oldCoords, Coordinate newCoords, SDL_Texture *texture, Direction dir, bool isPlayer);
 
 /* Koordinátákból megadja az irányt */
 Direction getDirectionFromCoords(Coordinate newCoords, Coordinate oldCoords);
@@ -104,10 +104,10 @@ void bigPointsInit(Level* level);
 MoveEnable moveAIPlayerKill(Direction dir, Coordinate coords, Level* level);
 
 /* Vizsgálja hogy  a szörny megehet-e egy játékost, ha igen, akkor végrehajta, vagyis megeszi */
-void monsterAiKill(renderAssets *renderAsset, Level* level, Monster *monster, Player *playerOne, Player *playerTwo);
+void monsterAiKill(RenderAssets *renderAsset, Level* level, Monster *monster, Player *playerOne, Player *playerTwo);
 
 /* Mozgat egy szörnyet */
-void monsterAiMove(renderAssets *renderAsset, Level *level, Monster *monster);
+void monsterAiMove(RenderAssets *renderAsset, Level *level, Monster *monster);
 
 /* Újra spawnol egy játékost, a szörnyektõl egy bizonyos távolságra !!! Nincs force spawn, a játék leállhat ha nincs elég távolság !!! */
 void respawnPlayer(Monsters *monsters, Level *level, Player *player);
@@ -122,7 +122,7 @@ bool checkMovementValidDir(Level* level, Coordinate coords);
 Coordinate getCoordsFromDir(Direction dir, Coordinate coords);
 
 /* Igaz a Monster strukturúban a dir változó irányába a lépés megtehetõ */
-bool preferredDirAiMove(renderAssets *renderAsset, Level *level, Monster *monster);
+bool preferredDirAiMove(RenderAssets *renderAsset, Level *level, Monster *monster);
 
 /* A játék alatt szerzett pontokatt módósítja a nehézség függvényében */
 int getPointsFromDifficulty(Difficulty difficulty, int score);
@@ -131,7 +131,7 @@ int getPointsFromDifficulty(Difficulty difficulty, int score);
 void freeMonsters(Monsters *monsters);
 
 /* Inicializálja a szörnyeket */
-Monsters *initMonsters(renderAssets *renderAsset, Level* level);
+Monsters *initMonsters(RenderAssets *renderAsset, Level* level);
 
 /* Ha sfx nem NULL, lejátsza a hangeffektet */
 void playSFX(Mix_Chunk *sfx);

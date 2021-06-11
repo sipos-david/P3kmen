@@ -3,7 +3,7 @@
 #include "render.h"
 #include <math.h>
 
-Player playerInit(renderAssets *renderAsset,Difficulty difficulty,TileType pacmanID,Level *level) {
+Player playerInit(RenderAssets *renderAsset,Difficulty difficulty,TileType pacmanID,Level *level) {
 	Player player;
 
 	switch (difficulty) {
@@ -192,7 +192,7 @@ Uint32 timerMonsterAiMove(Uint32 ms, void *param) {
 }
 
 
-void playGame(renderAssets *renderAsset, Level* level, Player *playerOne, Player *playerTwo, Monsters* baddies){
+void playGame(RenderAssets *renderAsset, Level* level, Player *playerOne, Player *playerTwo, Monsters* baddies){
 	SDL_TimerID timer1SecID = SDL_AddTimer(1000, timer, NULL);
 	SDL_TimerID timerForMonsterAiKill = SDL_AddTimer(100, timerMonsterAiKill, NULL);
 	SDL_TimerID timerForMonsterAiMove = SDL_AddTimer(200, timerMonsterAiMove, NULL);
@@ -311,7 +311,7 @@ bool gameEndCheck(Level* level){
 	else return false;
 }
 
-void keyBoardInputHandler(renderAssets *renderAsset, Level* level, SDL_Event *event, Player *playerOne, Player *playerTwo, Monsters *monsters) {
+void keyBoardInputHandler(RenderAssets *renderAsset, Level* level, SDL_Event *event, Player *playerOne, Player *playerTwo, Monsters *monsters) {
 	if (playerOne != NULL && playerOne->state != dead_player ) {
 		switch (event->key.keysym.sym) {
 			case SDLK_UP:
@@ -358,7 +358,7 @@ void keyBoardInputHandler(renderAssets *renderAsset, Level* level, SDL_Event *ev
 	}
 }
 
-void playerMoveToNewDest(renderAssets *renderAsset, Level *level, Player *player, Direction dir, Monsters *monsters){
+void playerMoveToNewDest(RenderAssets *renderAsset, Level *level, Player *player, Direction dir, Monsters *monsters){
 	Coordinate newCoords = getCoordinateFromDirection(level->dimension, player->coordinate,dir);
 	if (moveIsValidCheck(level, newCoords)) {
 		switch (level->map[newCoords.x][newCoords.y]) {
@@ -467,7 +467,7 @@ Coordinate getCoordinateFromDirection(LevelDimensions size,Coordinate coords, Di
 	return coords;
 }
 
-void moveEntityToDest(renderAssets *renderAsset, Level *level,TileType id, Coordinate oldCoords ,Coordinate newCoords, SDL_Texture *texture, Direction dir, bool isPlayer){
+void moveEntityToDest(RenderAssets *renderAsset, Level *level,TileType id, Coordinate oldCoords ,Coordinate newCoords, SDL_Texture *texture, Direction dir, bool isPlayer){
 	if (isPlayer) {
 		level->map[newCoords.x][newCoords.y] = id;
 		level->map[oldCoords.x][oldCoords.y] = path;
@@ -701,7 +701,7 @@ MoveEnable moveAIPlayerKill(Direction dir, Coordinate coords, Level* level){
 	nextMove.coordinate = coords;
 	return nextMove;
 }
-void  monsterMoveAiExecute(renderAssets *renderAsset, Level *level, Monster *monster, Player *player, Direction dir, MoveEnable nextMove){
+void  monsterMoveAiExecute(RenderAssets *renderAsset, Level *level, Monster *monster, Player *player, Direction dir, MoveEnable nextMove){
 	if (nextMove.enable && nextMove.isPlayer) {
 		playSFX(renderAsset->sounds->nom_nom);
 		if (level->map[nextMove.coordinate.x][nextMove.coordinate.y] == pacmanA && player->state == base) {
@@ -726,7 +726,7 @@ void  monsterMoveAiExecute(renderAssets *renderAsset, Level *level, Monster *mon
 }
 
 
-void monsterAiKill(renderAssets *renderAsset, Level *level, Monster *monster, Player *playerOne, Player *playerTwo){
+void monsterAiKill(RenderAssets *renderAsset, Level *level, Monster *monster, Player *playerOne, Player *playerTwo){
 	MoveEnable nextMove = moveAIPlayerKill(up,monster->coordinate,level);
 	if (nextMove.enable && nextMove.isPlayer && level->map[nextMove.coordinate.x][nextMove.coordinate.y] == pacmanA && playerOne->state == base) {
 		monsterMoveAiExecute(renderAsset, level, monster, playerOne, up, nextMove);
@@ -762,7 +762,7 @@ void monsterAiKill(renderAssets *renderAsset, Level *level, Monster *monster, Pl
 	}
 }
 
-void monsterAiMove(renderAssets *renderAsset, Level *level, Monster *monster){
+void monsterAiMove(RenderAssets *renderAsset, Level *level, Monster *monster){
 	if (preferredDirAiMove(renderAsset, level, monster)) {
 		return;
 	}
@@ -770,7 +770,7 @@ void monsterAiMove(renderAssets *renderAsset, Level *level, Monster *monster){
 	preferredDirAiMove(renderAsset, level, monster);
 }
 
-bool preferredDirAiMove(renderAssets *renderAsset, Level *level, Monster *monster){
+bool preferredDirAiMove(RenderAssets *renderAsset, Level *level, Monster *monster){
 	Coordinate newCoords = getCoordsFromDir(monster->movementDir, monster->coordinate);
 	if (checkMovementValidDir(level, newCoords) && moveIsValidCheck(level, newCoords)){
 		moveEntityToDest(renderAsset, level, monster->id, monster->coordinate, newCoords, monster->texture, monster->movementDir, false);
@@ -860,7 +860,7 @@ void freeMonsters(Monsters *monsters) {
 	free(monsters);
 }
 
-Monsters *initMonsters(renderAssets *renderAsset,Level* level) {
+Monsters *initMonsters(RenderAssets *renderAsset,Level* level) {
 	Monsters *enemies = (Monsters*)malloc(sizeof(Monsters));
 
 	enemies->monster_A = (Monster*)malloc(sizeof(Monster));

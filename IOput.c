@@ -3,7 +3,7 @@
 #include "IOput.h"
 #include <math.h>
 
-MainMenuSelection getMainMenuInput(SDL_Event *eventMain, MainMenuSelection selection, renderAssets *renderAsset){
+MainMenuSelection getMainMenuInput(SDL_Event *eventMain, MainMenuSelection selection, RenderAssets *renderAsset){
 	if (eventMain->type == SDL_KEYDOWN) {
 		switch (eventMain->key.keysym.sym) {
 		case SDLK_UP:
