@@ -1,4 +1,4 @@
-# P3kman
+# P3kmen
 
 <p align="center"><img height=100 src="doc/logo.png?raw=true"/></p>
 
