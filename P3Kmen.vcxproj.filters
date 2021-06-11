@@ -51,40 +51,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gamebase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gamelogic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IOput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="render.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rendercalc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="gamelogic.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IOput.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="render.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="rendercalc.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="resources\textures\mainmenu_logo.bmp">
       <Filter>Resource Files\textures\main_menu</Filter>
     </Image>
@@ -259,5 +225,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\gamebase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gamelogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IOput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rendercalc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\gamelogic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IOput.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rendercalc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
