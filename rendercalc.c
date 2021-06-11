@@ -206,8 +206,8 @@ SDL_Rect getHeartRectBase(renderAssets *renderAsset,Coordinate start){
 }
 
 char *getLeveLSourcePathString(int levelNumber) {
-	char *sourcePath = (char*)malloc((strlen("levels/level_X.txt") + 1) * sizeof(char));
-	sprintf(sourcePath,"levels/level_%d.txt", levelNumber);
+	char *sourcePath = (char*)malloc((strlen("resources/levels/level_X.txt") + 1) * sizeof(char));
+	sprintf(sourcePath,"resources/levels/level_%d.txt", levelNumber);
 	return sourcePath;
 }
 

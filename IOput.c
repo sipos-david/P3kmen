@@ -46,9 +46,9 @@ Place **readTopList(int placementNumber){
 
 	FILE *eredmenyek;
 
-	eredmenyek = fopen("Eredmények.txt", "rt");
+	eredmenyek = fopen("resources/top_scores.txt", "rt");
 	if (eredmenyek == NULL) {
-		printf("Eredmények.txt could not open!\n");
+		printf("top_scores.txt could not open!\n");
 		return NULL;
 	}
 	char read;
@@ -159,9 +159,9 @@ void placeStructArraySelectionSort(Place **list, int size){
 void writeTopList(Place **list, int size) {
 	FILE *eredmenyek;
 
-	eredmenyek = fopen("Eredmények.txt", "wt");
+	eredmenyek = fopen("resources/top_scores.txt", "wt");
 	if (eredmenyek == NULL) {
-		printf("Eredmények.txt could not open!\n");
+		printf("top_scores.txt could not open!\n");
 		return;
 	}
 

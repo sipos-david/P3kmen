@@ -60,39 +60,39 @@ initRenderer initRender(windowData windowResolution){
 initSounds loadSounds(void) {
 	initSounds sounds;
 
-	sounds.background_music = Mix_LoadMUS("sources/sounds/Loyalty_Freak_Music_-_Sweat_Time.wav");
+	sounds.background_music = Mix_LoadMUS("resources/sounds/Loyalty_Freak_Music_-_Sweat_Time.wav");
 	if (sounds.background_music == NULL)
 		printf("Failed to load - background_music - music! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.menu_choose = Mix_LoadWAV("sources/sounds/menu_choose.wav");
+	sounds.menu_choose = Mix_LoadWAV("resources/sounds/menu_choose.wav");
 	if (sounds.menu_choose == NULL)
 		printf("Failed to load - menu_choose - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.menu_move = Mix_LoadWAV("sources/sounds/menu_click.wav");
+	sounds.menu_move = Mix_LoadWAV("resources/sounds/menu_click.wav");
 	if (sounds.menu_move == NULL)
 		printf("Failed to load - sounds.menu_move - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.nom_nom = Mix_LoadWAV("sources/sounds/nom_nom.wav");
+	sounds.nom_nom = Mix_LoadWAV("resources/sounds/nom_nom.wav");
 	if (sounds.nom_nom == NULL)
 		printf("Failed to load - sounds.nom_nom - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.point_normal_eaten = Mix_LoadWAV("sources/sounds/point_normal_eaten.wav");
+	sounds.point_normal_eaten = Mix_LoadWAV("resources/sounds/point_normal_eaten.wav");
 	if (sounds.point_normal_eaten == NULL)
 		printf("Failed to load - point_normal_eaten - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.point_big_eaten = Mix_LoadWAV("sources/sounds/point_big_eaten.wav");
+	sounds.point_big_eaten = Mix_LoadWAV("resources/sounds/point_big_eaten.wav");
 	if (sounds.point_big_eaten == NULL)
 		printf("Failed to load - point_big_eaten - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.freeze = Mix_LoadWAV("sources/sounds/freeze.wav");
+	sounds.freeze = Mix_LoadWAV("resources/sounds/freeze.wav");
 	if (sounds.freeze == NULL)
 		printf("Failed to load - freeze - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.monster_eaten = Mix_LoadWAV("sources/sounds/monster_eaten.wav");
+	sounds.monster_eaten = Mix_LoadWAV("resources/sounds/monster_eaten.wav");
 	if (sounds.monster_eaten == NULL)
 		printf("Failed to load - monster_eaten - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
-	sounds.chili = Mix_LoadWAV("sources/sounds/chili.wav");
+	sounds.chili = Mix_LoadWAV("resources/sounds/chili.wav");
 	if (sounds.chili == NULL)
 		printf("Failed to load - chili - effect! SDL_mixer Error: %s\n", Mix_GetError());
 
@@ -115,57 +115,57 @@ initTexture loadTexture(initRenderer *renderer){
 	initTexture texture;
 	
 	/* Player textúrák betöltése*/
-	texture.pacmanA_up = loadImage("sources/textures/pacman_a_up.bmp", renderer);
-	texture.pacmanA_down = loadImage("sources/textures/pacman_a_down.bmp", renderer);
-	texture.pacmanA_left = loadImage("sources/textures/pacman_a_left.bmp", renderer);
-	texture.pacmanA_right = loadImage("sources/textures/pacman_a_right.bmp", renderer);
-	texture.pacmanB_up = loadImage("sources/textures/pacman_b_up.bmp", renderer);
-	texture.pacmanB_down = loadImage("sources/textures/pacman_b_down.bmp", renderer);
-	texture.pacmanB_left = loadImage("sources/textures/pacman_b_left.bmp", renderer);
-	texture.pacmanB_right = loadImage("sources/textures/pacman_b_right.bmp", renderer);
+	texture.pacmanA_up = loadImage("resources/textures/pacman_a_up.bmp", renderer);
+	texture.pacmanA_down = loadImage("resources/textures/pacman_a_down.bmp", renderer);
+	texture.pacmanA_left = loadImage("resources/textures/pacman_a_left.bmp", renderer);
+	texture.pacmanA_right = loadImage("resources/textures/pacman_a_right.bmp", renderer);
+	texture.pacmanB_up = loadImage("resources/textures/pacman_b_up.bmp", renderer);
+	texture.pacmanB_down = loadImage("resources/textures/pacman_b_down.bmp", renderer);
+	texture.pacmanB_left = loadImage("resources/textures/pacman_b_left.bmp", renderer);
+	texture.pacmanB_right = loadImage("resources/textures/pacman_b_right.bmp", renderer);
 
 	/* Szörny textúrák betöltése*/
-	texture.monster_a = loadImage("sources/textures/Mask.bmp", renderer);
-	texture.monster_b = loadImage("sources/textures/Pearl.bmp", renderer);
-	texture.monster_c = loadImage("sources/textures/Cthute.bmp", renderer);
+	texture.monster_a = loadImage("resources/textures/Mask.bmp", renderer);
+	texture.monster_b = loadImage("resources/textures/Pearl.bmp", renderer);
+	texture.monster_c = loadImage("resources/textures/Cthute.bmp", renderer);
 
 	/* Egyéb textúrák betöltése*/
 
-	texture.heart = loadImage("sources/textures/heart.bmp", renderer);
+	texture.heart = loadImage("resources/textures/heart.bmp", renderer);
 
 	/* Pálya textúrák betöltése */
-	texture.path = loadImage("sources/textures/path.bmp", renderer);
-	texture.path_point = loadImage("sources/textures/point.bmp", renderer);
-	texture.path_big_point = loadImage("sources/textures/big_point.bmp", renderer);
-	texture.shaved_ice = loadImage("sources/textures/shaved_ice.bmp", renderer);
-	texture.chili = loadImage("sources/textures/chili.bmp", renderer);
-	texture.wall_0 = loadImage("sources/textures/wall_0.bmp", renderer);
-	texture.wall_1_up = loadImage("sources/textures/wall_1_up.bmp", renderer);
-	texture.wall_1_down = loadImage("sources/textures/wall_1_down.bmp", renderer);
-	texture.wall_1_left = loadImage("sources/textures/wall_1_left.bmp", renderer);
-	texture.wall_1_right = loadImage("sources/textures/wall_1_right.bmp", renderer);
-	texture.wall_2_hor = loadImage("sources/textures/wall_2_horizontal.bmp", renderer);
-	texture.wall_2_vert = loadImage("sources/textures/wall_2_vertical.bmp", renderer);
-	texture.wall_2_u_r = loadImage("sources/textures/wall_2_u_r.bmp", renderer);
-	texture.wall_2_u_l = loadImage("sources/textures/wall_2_u_l.bmp", renderer);
-	texture.wall_2_d_r = loadImage("sources/textures/wall_2_d_r.bmp", renderer);
-	texture.wall_2_d_l = loadImage("sources/textures/wall_2_d_l.bmp", renderer);
-	texture.wall_3_up = loadImage("sources/textures/wall_3_up.bmp", renderer);
-	texture.wall_3_down = loadImage("sources/textures/wall_3_down.bmp", renderer);
-	texture.wall_3_left = loadImage("sources/textures/wall_3_left.bmp", renderer);
-	texture.wall_3_right = loadImage("sources/textures/wall_3_right.bmp", renderer);
-	texture.wall_4 = loadImage("sources/textures/wall_4.bmp", renderer);
+	texture.path = loadImage("resources/textures/path.bmp", renderer);
+	texture.path_point = loadImage("resources/textures/point.bmp", renderer);
+	texture.path_big_point = loadImage("resources/textures/big_point.bmp", renderer);
+	texture.shaved_ice = loadImage("resources/textures/shaved_ice.bmp", renderer);
+	texture.chili = loadImage("resources/textures/chili.bmp", renderer);
+	texture.wall_0 = loadImage("resources/textures/wall_0.bmp", renderer);
+	texture.wall_1_up = loadImage("resources/textures/wall_1_up.bmp", renderer);
+	texture.wall_1_down = loadImage("resources/textures/wall_1_down.bmp", renderer);
+	texture.wall_1_left = loadImage("resources/textures/wall_1_left.bmp", renderer);
+	texture.wall_1_right = loadImage("resources/textures/wall_1_right.bmp", renderer);
+	texture.wall_2_hor = loadImage("resources/textures/wall_2_horizontal.bmp", renderer);
+	texture.wall_2_vert = loadImage("resources/textures/wall_2_vertical.bmp", renderer);
+	texture.wall_2_u_r = loadImage("resources/textures/wall_2_u_r.bmp", renderer);
+	texture.wall_2_u_l = loadImage("resources/textures/wall_2_u_l.bmp", renderer);
+	texture.wall_2_d_r = loadImage("resources/textures/wall_2_d_r.bmp", renderer);
+	texture.wall_2_d_l = loadImage("resources/textures/wall_2_d_l.bmp", renderer);
+	texture.wall_3_up = loadImage("resources/textures/wall_3_up.bmp", renderer);
+	texture.wall_3_down = loadImage("resources/textures/wall_3_down.bmp", renderer);
+	texture.wall_3_left = loadImage("resources/textures/wall_3_left.bmp", renderer);
+	texture.wall_3_right = loadImage("resources/textures/wall_3_right.bmp", renderer);
+	texture.wall_4 = loadImage("resources/textures/wall_4.bmp", renderer);
 
 	/* Fõmenu textúrák betöltése*/
-	texture.mainmenu_logo = loadImage("sources/textures/mainmenu_logo.bmp", renderer);
-	texture.mainmenu_singleplayer_a = loadImage("sources/textures/mainmenu_singleplayer_a.bmp", renderer);
-	texture.mainmenu_singleplayer_b = loadImage("sources/textures/mainmenu_singleplayer_b.bmp", renderer);
-	texture.mainmenu_multiplayer_a = loadImage("sources/textures/mainmenu_multiplayer_a.bmp", renderer);
-	texture.mainmenu_multiplayer_b = loadImage("sources/textures/mainmenu_multiplayer_b.bmp", renderer);
-	texture.mainmenu_toplist_a = loadImage("sources/textures/mainmenu_toplist_a.bmp", renderer);
-	texture.mainmenu_toplist_b = loadImage("sources/textures/mainmenu_toplist_b.bmp", renderer);
-	texture.mainmenu_quit_a = loadImage("sources/textures/mainmenu_quit_a.bmp", renderer);
-	texture.mainmenu_quit_b = loadImage("sources/textures/mainmenu_quit_b.bmp", renderer);
+	texture.mainmenu_logo = loadImage("resources/textures/mainmenu_logo.bmp", renderer);
+	texture.mainmenu_singleplayer_a = loadImage("resources/textures/mainmenu_singleplayer_a.bmp", renderer);
+	texture.mainmenu_singleplayer_b = loadImage("resources/textures/mainmenu_singleplayer_b.bmp", renderer);
+	texture.mainmenu_multiplayer_a = loadImage("resources/textures/mainmenu_multiplayer_a.bmp", renderer);
+	texture.mainmenu_multiplayer_b = loadImage("resources/textures/mainmenu_multiplayer_b.bmp", renderer);
+	texture.mainmenu_toplist_a = loadImage("resources/textures/mainmenu_toplist_a.bmp", renderer);
+	texture.mainmenu_toplist_b = loadImage("resources/textures/mainmenu_toplist_b.bmp", renderer);
+	texture.mainmenu_quit_a = loadImage("resources/textures/mainmenu_quit_a.bmp", renderer);
+	texture.mainmenu_quit_b = loadImage("resources/textures/mainmenu_quit_b.bmp", renderer);
 	return texture;
 }
 

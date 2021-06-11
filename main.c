@@ -22,7 +22,7 @@ int main(int argc, char* args[]){
 	windowData window = getWindowData();
 	initRenderer renderer = initRender(window);
 	initTexture texture = loadTexture(&renderer);
-	initFont amaticBold = loadFont("sources/fonts/Amatic-Bold.ttf", 32);
+	initFont amaticBold = loadFont("resources/fonts/Amatic-Bold.ttf", 32);
 	initSounds sounds = loadSounds();
 	renderAssets renderAsset = {&renderer, &texture, &amaticBold, &sounds, &window, false};
 	initMainMenuCoords mainMenuCoord = getMainMenuCoords(renderer.SCREEN_HEIGHT, renderer.SCREEN_WIDTH);
